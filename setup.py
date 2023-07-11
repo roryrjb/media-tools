@@ -15,6 +15,7 @@ setup(
             "sort-media=media_tools.sort_media:main",
             "cut-video=media_tools.cut_video:main",
             "resize-video=media_tools.resize_video:main",
+            "convert-video=media_tools.convert_video:main",
         ],
     },
     zip_safe=False,
