@@ -3,6 +3,7 @@
 import argparse
 from os import path
 import ffmpeg
+import sys
 
 DEFAULT_SCALE = 640
 
@@ -22,7 +23,9 @@ def main():
     out = f"{name}-small{ext}"
     cmd = ffmpeg.input(args.filename).output(out, vf=f"scale={scale}:-1")
 
+    print(" ".join(cmd.compile()))
+
     if args.dry_run:
-        print(" ".join(cmd.compile()))
-    else:
-        cmd.run()
+        sys.exit(0)
+
+    cmd.run()

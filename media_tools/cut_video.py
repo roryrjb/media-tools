@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import sys
 import argparse
 from os import path
 import ffmpeg
@@ -32,7 +33,9 @@ def main():
         vcodec="copy",
     )
 
+    print(" ".join(cmd.compile()))
+
     if args.dry_run:
-        print(" ".join(cmd.compile()))
-    else:
-        cmd.run()
+        sys.exit(0)
+
+    cmd.run()

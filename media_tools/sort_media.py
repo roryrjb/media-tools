@@ -83,6 +83,7 @@ def rename_file(args, prefix: str, date: datetime | None, filename: str, ext: st
         if args.dry_run:
             print(f"{filename} -> {new_filename}")
         else:
+            print(f"{filename} -> {new_filename}")
             os.rename(filename, new_filename)
     except Exception as e:
         print(f"Error renaming {filename}: {e}.", file=sys.stderr)
