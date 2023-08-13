@@ -13,7 +13,7 @@ FFMPEG_TYPES = (".mkv", ".mp4", ".mov", ".avi")
 proposed_filenames = []  # for use with --dry-run
 
 
-def exists(args, filename: str) -> bool:
+def exists(args, filename):
     return (
         proposed_filenames.count(filename) > 0
         if args.dry_run
@@ -21,7 +21,7 @@ def exists(args, filename: str) -> bool:
     )
 
 
-def get_exif_datetime(filename: str) -> datetime | None:
+def get_exif_datetime(filename):
     with open(filename, "rb") as fh:
         try:
             tags = exifread.process_file(fh)
@@ -42,7 +42,7 @@ def get_exif_datetime(filename: str) -> datetime | None:
             return None
 
 
-def get_ffmpeg_datetime(filename: str) -> datetime | None:
+def get_ffmpeg_datetime(filename):
     metadata = ffmpeg.probe(filename)
     creation_time = (
         metadata["format"]["tags"]["creation_time"]
@@ -56,7 +56,7 @@ def get_ffmpeg_datetime(filename: str) -> datetime | None:
     return datetime.strptime(creation_time, "%Y-%m-%dT%H:%M:%S.%fZ")
 
 
-def rename_file(args, prefix: str, date: datetime | None, filename: str, ext: str):
+def rename_file(args, prefix, date, filename, ext):
     if date is None:
         print(f"Date couldn't be extracted from {filename}.", file=sys.stderr)
         return
@@ -89,17 +89,17 @@ def rename_file(args, prefix: str, date: datetime | None, filename: str, ext: st
         print(f"Error renaming {filename}: {e}.", file=sys.stderr)
 
 
-def rename_image(args, filename: str, ext: str):
+def rename_image(args, filename, ext):
     date = get_exif_datetime(filename)
     rename_file(args, "IMG", date, filename, ext)
 
 
-def rename_video(args, filename: str, ext: str):
+def rename_video(args, filename, ext):
     date = get_ffmpeg_datetime(filename)
     rename_file(args, "VID", date, filename, ext)
 
 
-def scan_dir_for_files(path: str, recursive=False):
+def scan_dir_for_files(path, recursive=False):
     for entry in os.scandir(path):
         if recursive and entry.is_dir() and not entry.is_symlink():
             for entry in scan_dir_for_files(entry.path, True):

@@ -19,6 +19,7 @@ def main():
     parser.add_argument("filename", type=str)
     parser.add_argument("--start", type=time, default="00:00:00")
     parser.add_argument("--end", type=time, default="23:59:59")
+    parser.add_argument("--name", type=str)
     parser.add_argument(
         "--dry-run",
         help="simulate actions without touching filesystem",
@@ -26,7 +27,8 @@ def main():
     )
     args = parser.parse_args()
     (name, ext) = path.splitext(args.filename)
-    out = f"{name}-cut{ext}"
+    out = args.name if args.name else f"{name}-cut{ext}"
+
     cmd = ffmpeg.input(args.filename, ss=args.start, to=args.end).output(
         out,
         acodec="copy",
