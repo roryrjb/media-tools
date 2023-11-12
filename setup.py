@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="media-tools",
-    version="0.1",
+    version="0.2",
     description="A set of tools for working with photos and videos.",
     url="https://github.com/roryrjb/media-tools",
     author="Rory Bradford",
@@ -16,6 +16,7 @@ setup(
             "cut-video=media_tools.cut_video:main",
             "resize-video=media_tools.resize_video:main",
             "convert-video=media_tools.convert_video:main",
+            "make-gif=media_tools.make_gif:main",
         ],
     },
     zip_safe=False,

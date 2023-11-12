@@ -18,7 +18,6 @@ def main():
         action="store_true",
     )
     args = parser.parse_args()
-    scale = args.scale or DEFAULT_SCALE
     (name, ext) = path.splitext(args.filename)
     out = f"{name}-small{ext}"
     cmd = ffmpeg.input(args.filename).output(out, vf=f"scale={scale}:-1")
