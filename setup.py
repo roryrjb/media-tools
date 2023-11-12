@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="media-tools",
-    version="0.2",
+    version="0.3",
     description="A set of tools for working with photos and videos.",
     url="https://github.com/roryrjb/media-tools",
     author="Rory Bradford",

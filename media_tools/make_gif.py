@@ -31,7 +31,7 @@ def main():
     out = f"{name}.gif"
     cmd = ffmpeg.input(args.filename, ss=args.start, to=args.end).output(
         out,
-        vf=f"scale={scale}:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse,fps={args.fps}",
+        vf=f"scale={args.scale}:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse,fps={args.fps}",
     )
 
     print(" ".join(cmd.compile()))

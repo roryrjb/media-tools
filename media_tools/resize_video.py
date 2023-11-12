@@ -20,7 +20,7 @@ def main():
     args = parser.parse_args()
     (name, ext) = path.splitext(args.filename)
     out = f"{name}-small{ext}"
-    cmd = ffmpeg.input(args.filename).output(out, vf=f"scale={scale}:-1")
+    cmd = ffmpeg.input(args.filename).output(out, vf=f"scale={args.scale}:-1")
 
     print(" ".join(cmd.compile()))
 
