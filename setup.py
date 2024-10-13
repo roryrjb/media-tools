@@ -18,6 +18,7 @@ setup(
             "convert-video=media_tools.convert_video:main",
             "make-gif=media_tools.make_gif:main",
             "remove-audio=media_tools.remove_audio:main",
+            "slow-motion-correct=media_tools.slow_motion_correct:main",
         ],
     },
     zip_safe=False,
