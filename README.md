@@ -7,7 +7,7 @@ This is basically a set of wrapper scripts for `ffmpeg` that I use regularly, mo
 __Scripts:__
 
 * `sort-media`
-* `cut-vide`
+* `cut-video`
 * `resize-video`
 * `convert-video`
 * `make-gif`
