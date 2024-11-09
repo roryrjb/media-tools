@@ -31,3 +31,7 @@ def main():
             continue
 
         cmd.run()
+
+
+if __name__ == "__main__":
+    main()

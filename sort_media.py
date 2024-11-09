@@ -132,3 +132,7 @@ def main():
             rename_image(args, filename, ext)
         elif ext in FFMPEG_TYPES:
             rename_video(args, filename, ext)
+
+
+if __name__ == "__main__":
+    main()

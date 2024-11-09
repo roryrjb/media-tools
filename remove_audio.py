@@ -22,3 +22,7 @@ def main():
     print(" ".join(cmd.compile()))
 
     cmd.run()
+
+
+if __name__ == "__main__":
+    main()

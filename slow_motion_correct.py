@@ -34,3 +34,7 @@ def main():
         sys.exit(0)
 
     cmd.run()
+
+
+if __name__ == "__main__":
+    main()

@@ -1,4 +1,4 @@
 build/
 dist/
-*.egg-info/
-.ruff_cache/
+venv/
+*.spec
